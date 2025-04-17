@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 import css from './DetailPage.module.css'
 import { formmatCurrency } from '@/utils/feature'
 import ProductCard from '@/components/ProductCard'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
 
 const DetailPage = () => {
   const { product, relatedProducts } = useLoaderData()
@@ -67,13 +69,19 @@ const DetailPage = () => {
         </div>
       </div>
 
-      <ul className={css.list}>
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={15}
+        pagination={{ clickable: true }}
+        modules={[Pagination]}
+        className={css.detailSlider}
+      >
         {relatedProducts.map(item => (
-          <li key={item.id}>
+          <SwiperSlide key={item.id}>
             <ProductCard item={item} />
-          </li>
+          </SwiperSlide>
         ))}
-      </ul>
+      </Swiper>
     </main>
   )
 }
