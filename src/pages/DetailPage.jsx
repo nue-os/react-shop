@@ -1,7 +1,11 @@
 import React from 'react'
 
 const DetailPage = () => {
-  return <div>DetailPage</div>
+  return (
+    <main>
+      <h2>DetailPage</h2>
+    </main>
+  )
 }
 
 export default DetailPage
