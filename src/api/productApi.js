@@ -10,3 +10,12 @@ export const getProductsData = async (query = '') => {
     // throw err // 호출된 곳으로 에러 던지기
   }
 }
+
+export const getProductById = async id => {
+  try {
+    const res = await axios.get(`${BASE_URL}/${id}`)
+    return res.data
+  } catch (err) {
+    console.log('[error]', err)
+  }
+}
