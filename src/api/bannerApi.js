@@ -1,9 +1,9 @@
 import axios from 'axios'
-const BASE_URL = 'http://localhost:3000/banners/'
+// const BASE_URL = 'http://localhost:3000/banners/'
 
 export const getBannerData = async () => {
   try {
-    const res = await axios.get(`${BASE_URL}`)
+    const res = await axios.get(`/api/banners/`)
     return res.data
   } catch (err) {
     console.log('[error]', err)
