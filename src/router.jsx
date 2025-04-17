@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
+import { lazy } from 'react'
 
 import Default from './layout/Default'
 
@@ -21,8 +21,7 @@ const CartPage = lazy(() => import('./pages/CartPage'))
 const DetailPage = lazy(() => import('./pages/DetailPage'))
 
 import NotFound from './pages/NotFound'
-import Loading from './components/Loading'
-import { getProductById } from './api/productApi'
+import { productDeatailLoader } from './loaders/productLoader'
 
 const router = createBrowserRouter([
   {
@@ -38,14 +37,7 @@ const router = createBrowserRouter([
       {
         path: '/detail/:productId',
         element: <DetailPage />,
-        loader: async ({ params }) => {
-          try {
-            const product = await getProductById(params.productId)
-            return product // 리턴 값을 컴포넌트(<DetailPage/>)에서 받을 수 있음
-          } catch (err) {
-            console.log('[error]', err)
-          }
-        },
+        loader: productDeatailLoader,
       },
     ],
   },
