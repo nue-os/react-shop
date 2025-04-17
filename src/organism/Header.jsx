@@ -27,6 +27,12 @@ const Header = () => {
     []
   )
 
+  // const handleResize = throttle(() => {
+  //   if (window.innerWidth > 1100) {
+  //     setIsOn(false)
+  //   }
+  // }, 1000)
+
   useEffect(() => {
     window.addEventListener('resize', debouncedResize)
 
