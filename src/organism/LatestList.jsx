@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 import css from './LatestList.module.css'
 import ProductCard from '../components/ProductCard'
 import { getProductsData } from '../api/productApi'
+import ProductCardSkeleton from '../components/ProductCardSkeleton'
 
 const LatestList = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [count, setCount] = useState(8)
-  const [dropdownText, setDropDownText] = useState('갯수 선택')
+  const [dropdownText, setDropDownText] = useState('옵션')
 
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -29,6 +30,8 @@ const LatestList = () => {
     }
     fetchProducts()
   }, [count])
+
+  const skeletonArr = Array(count).fill(null)
 
   const updateCount = num => {
     setCount(num)
@@ -71,21 +74,18 @@ const LatestList = () => {
         </div>
       </div>
       <ul className={css.list}>
-        {loading ? (
-          <>
-            {[...Array(3)].map((_, idx) => (
+        {loading
+          ? skeletonArr.map((_, idx) => (
               <li key={idx}>
-                <div className={css.skeleton}></div>
+                {/* <div className={css.skeleton}></div> */}
+                <ProductCardSkeleton />
+              </li>
+            ))
+          : products.map(item => (
+              <li key={item.id}>
+                <ProductCard item={item} />
               </li>
             ))}
-          </>
-        ) : (
-          products.map(item => (
-            <li key={item.id}>
-              <ProductCard item={item} />
-            </li>
-          ))
-        )}
       </ul>
     </section>
   )

@@ -47,10 +47,10 @@
 }
 
 /* 스켈레톤 UI */
-.skeleton {
+/* .skeleton {
   border-radius: var(--fs16);
   overflow: hidden;
-  padding-top: 100%; /* 부모의 너비 100% -> 정사각형 */
+  padding-top: 100%; 부모의 너비 100% -> 정사각형
   position: relative;
 }
 .skeleton::after {
@@ -75,4 +75,4 @@
   100% {
     transform: translateX(100%);
   }
-}
+} */
