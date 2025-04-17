@@ -22,6 +22,7 @@ const DetailPage = lazy(() => import('./pages/DetailPage'))
 
 import NotFound from './pages/NotFound'
 import Loading from './components/Loading'
+import { getProductById } from './api/productApi'
 
 const router = createBrowserRouter([
   {
@@ -34,16 +35,19 @@ const router = createBrowserRouter([
       { path: '/about', element: <AboutPage /> },
       { path: '/blog', element: <BlogPage /> },
       { path: '/cart', element: <CartPage /> },
-      { path: '/detail/:productId', element: <DetailPage /> },
+      {
+        path: '/detail/:productId',
+        element: <DetailPage />,
+        loader: async ({ params }) => {
+          try {
+            const product = await getProductById(params.productId)
+            return product // 리턴 값을 컴포넌트(<DetailPage/>)에서 받을 수 있음
+          } catch (err) {
+            console.log('[error]', err)
+          }
+        },
+      },
     ],
-  },
-  {
-    path: '*',
-    element: (
-      <Suspense fallback={<Loading />}>
-        <NotFound />
-      </Suspense>
-    ),
   },
 ])
 export default router
