@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { lazy } from 'react'
-
 import Default from './layout/Default'
+import NotFound from './pages/NotFound'
+import { productDeatailLoader } from './loaders/productLoader'
 
 const MainPage = lazy(() => import('./pages/MainPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
@@ -19,9 +20,6 @@ const ShopPage = lazy(() => {
 const BlogPage = lazy(() => import('./pages/BlogPage'))
 const CartPage = lazy(() => import('./pages/CartPage'))
 const DetailPage = lazy(() => import('./pages/DetailPage'))
-
-import NotFound from './pages/NotFound'
-import { productDeatailLoader } from './loaders/productLoader'
 
 const router = createBrowserRouter([
   {
