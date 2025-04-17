@@ -2,7 +2,8 @@ import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 
 const DetailPage = () => {
-  const product = useLoaderData()
+  const { product, relatedProducts } = useLoaderData()
+  console.log(relatedProducts)
 
   return (
     <main>

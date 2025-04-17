@@ -19,3 +19,18 @@ export const getProductById = async id => {
     console.log('[error]', err)
   }
 }
+
+export const getProductsByCategory = async (category, limit = 10) => {
+  try {
+    const res = await axios.get('/api/products/', {
+      params: {
+        category,
+        _limit: limit,
+      },
+    })
+    return res.data
+  } catch (err) {
+    console.log('[error]', err)
+    return [] // 강제적으로 crash 되는 것을 막을 수 있음
+  }
+}
