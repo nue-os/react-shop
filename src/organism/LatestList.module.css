@@ -1,0 +1,78 @@
+.listCon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--fs33);
+}
+
+.more {
+  font-size: var(--fs12);
+  transition: color 0.3s;
+}
+.more:hover {
+  color: var(--dark-colors-accent-dark);
+  font-weight: bold;
+}
+.more::after {
+  content: '\F138'; /* 부트스트랩 아이콘 CSS Code point */
+  font-family: 'bootstrap-icons'; /* 필수 작성 */
+  display: inline-block;
+  transition: transform 0.3s;
+}
+.more:hover::after {
+  transform: translateX(5px);
+}
+
+.dropdownWrap {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.dropdownWrap > div > ul {
+  min-width: 100%;
+}
+
+.list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: var(--fs20);
+}
+
+@media (max-width: 600px) {
+  .list {
+    grid-template-columns: repeat(auto-fill, 1fr);
+  }
+}
+
+/* 스켈레톤 UI */
+.skeleton {
+  border-radius: var(--fs16);
+  overflow: hidden;
+  padding-top: 100%; /* 부모의 너비 100% -> 정사각형 */
+  position: relative;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
