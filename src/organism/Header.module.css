@@ -76,7 +76,6 @@
     flex-direction: column;
     justify-content: center;
     transition: 0.3s;
-    z-index: 10;
   }
   .gnb.on {
     right: 0;
@@ -93,6 +92,4 @@
     position: relative;
     z-index: 10;
   }
-}
-@media (max-width: 600px) {
 }
