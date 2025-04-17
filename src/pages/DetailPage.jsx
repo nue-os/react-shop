@@ -1,22 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getProductById } from '../api/productApi'
+import React from 'react'
+import { useLoaderData } from 'react-router-dom'
 
 const DetailPage = () => {
-  const { productId } = useParams()
-  const [product, setProduct] = useState({})
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const data = await getProductById(productId)
-        setProduct(data)
-      } catch (err) {
-        console.log('[error]', err)
-      }
-    }
-    fetchProduct()
-  }, [productId])
+  const product = useLoaderData()
 
   return (
     <main>
