@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import css from './DetailPage.module.css'
 import { formmatCurrency } from '@/utils/feature'
+import ProductCard from '@/components/ProductCard'
 
 const DetailPage = () => {
   const { product, relatedProducts } = useLoaderData()
-  console.log(product, relatedProducts)
+  const [activeTab, setActiveTab] = useState('description')
+
+  const handleTabClick = tab => setActiveTab(tab)
 
   return (
     <main>
@@ -29,8 +32,48 @@ const DetailPage = () => {
           </div>
         </div>
       </div>
-      <div>탭 메뉴</div>
-      <div>관련 상품</div>
+
+      <div className={css.tabCon}>
+        <ul className={css.tabList}>
+          <li
+            className={activeTab === 'description' ? css.active : ''}
+            onClick={() => handleTabClick('description')}
+          >
+            Description
+          </li>
+          <li
+            className={activeTab === 'info' ? css.active : ''}
+            onClick={() => handleTabClick('info')}
+          >
+            Additional information
+          </li>
+          <li
+            className={activeTab === 'review' ? css.active : ''}
+            onClick={() => handleTabClick('review')}
+          >
+            Reviews(0)
+          </li>
+        </ul>
+        <div className={css.tabContent}>
+          {activeTab === 'description' && (
+            <div>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium nostrum vel
+              nulla aspernatur esse! Dicta, architecto beatae! Maiores veniam culpa omnis numquam,
+              recusandae, eius possimus perspiciatis eos libero repellat ullam!
+            </div>
+          )}
+          {activeTab === 'info' && <div>info</div>}
+          {activeTab === 'review' && <div>review</div>}
+        </div>
+      </div>
+
+      <ul className={css.list}>
+        {relatedProducts.map(item => (
+          <li key={item.id}>
+            <ProductCard item={item} />
+          </li>
+        ))}
+      </ul>
     </main>
   )
 }

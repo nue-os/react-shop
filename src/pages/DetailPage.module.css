@@ -71,3 +71,47 @@ main > * {
   border-radius: var(--fs8);
   border: 1px solid var(--dark-colors-accent-dark);
 }
+
+/* 탭 */
+.tabCon {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fs20);
+}
+.tabList {
+  display: flex;
+  gap: var(--fs33);
+}
+.tabList > li {
+  position: relative;
+  padding: var(--fs16) var(--fs20);
+}
+.tabList > li::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--dark-colors-accent-dark);
+  transition: 0.3s;
+}
+.tabList > li.active::before,
+.tabList > li:hover::before {
+  width: 100%;
+}
+
+/* 관련 카테고리 상품 리스트*/
+.list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: var(--fs20);
+}
+
+@media (max-width: 600px) {
+  .list {
+    grid-template-columns: repeat(auto-fill, 1fr);
+  }
+}
