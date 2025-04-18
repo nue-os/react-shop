@@ -1,6 +1,7 @@
 main > * {
   margin-bottom: var(--fs33);
 }
+
 .detailCon {
   display: flex;
   gap: var(--fs33);
@@ -105,4 +106,14 @@ main > * {
 /* 관련 카테고리 상품 리스트*/
 .detailSlider {
   padding-bottom: var(--fs33);
+}
+
+@media (max-width: 600px) {
+  .detailCon {
+    flex-direction: column;
+  }
+
+  .imgWrap {
+    width: 100%;
+  }
 }
