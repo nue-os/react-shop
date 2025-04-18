@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import css from './Modal.module.css'
 import { formmatCurrency } from '@/utils/feature'
 import { useNavigate } from 'react-router-dom'
+import { addToCart } from '@/api/cartApi'
 
 const Modal = ({ product, count, onClose }) => {
   const [isActive, setIsActive] = useState(false)
@@ -25,8 +26,23 @@ const Modal = ({ product, count, onClose }) => {
     setTimeout(onClose, 300) // transition 시간만큼 setTimeout을 줘서 닫을 때도 효과 적용되도록
   }
 
-  const handleAddToCart = () => {
-    // 장바구니 상품을 추가(json-server 추가)
+  const handleAddToCart = async () => {
+    // 장바구니에 상품을 추가(json-server에 추가)
+    try {
+      const cartItem = {
+        id: product.id,
+        title: product.title,
+        img: product.img,
+        price: product.price,
+        category: product.category,
+        discount: product.discount,
+        count: count,
+      }
+      await addToCart(cartItem)
+      handleClose()
+    } catch (err) {
+      console.log('[error]', err)
+    }
 
     // 장바구니 페이지로 이동
     navigate('/cart')
