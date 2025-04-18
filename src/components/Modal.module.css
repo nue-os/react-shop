@@ -1,0 +1,49 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalCon {
+  position: relative;
+  opacity: 0;
+  background-color: var(--dark-colors-white-dark);
+  transform: translateY(-50px);
+  transition:
+    transform 0.3s,
+    opacity 0.1s;
+  padding: var(--fs33);
+  border-radius: var(--fs16);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.modal.active .modalCon {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.imgWrap {
+  width: 300px;
+}
+.imgWrap img {
+  width: 100%;
+}
+
+.btnClose {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: var(--fs33);
+}
+.btnClose:hover {
+  color: var(--dark-colors-white-dark);
+}
