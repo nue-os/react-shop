@@ -1,0 +1,36 @@
+.tabBtn {
+  border-bottom: 1px solid var(--light-colors-gray-light);
+}
+.tabBtn button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: var(--fs12) var(--fs20);
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+.tabBtn button:hover,
+.tabBtn button:focus,
+.tabBtn button.active {
+  border-bottom: 3px solid var(--dark-colors-accent-dark);
+}
+
+.tabContent {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.tabContent.visible {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLoaderData } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
 import css from './DetailPage.module.css'
 import { formmatCurrency } from '@/utils/feature'
 import ProductCard from '@/components/ProductCard'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
+import DetailTabInfo from '@/organism/DetailTabInfo'
 
 const DetailPage = () => {
   const { product, relatedProducts } = useLoaderData()
-  const [activeTab, setActiveTab] = useState('description')
-
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -26,8 +25,6 @@ const DetailPage = () => {
       return () => clearTimeout(timer)
     }
   }, [product])
-
-  const handleTabClick = tab => setActiveTab(tab)
 
   if (isLoading) {
     return (
@@ -61,39 +58,7 @@ const DetailPage = () => {
         </div>
       </div>
 
-      <div className={css.tabCon}>
-        <ul className={css.tabList}>
-          <li
-            className={activeTab === 'description' ? css.active : ''}
-            onClick={() => handleTabClick('description')}
-          >
-            Description
-          </li>
-          <li
-            className={activeTab === 'info' ? css.active : ''}
-            onClick={() => handleTabClick('info')}
-          >
-            Additional information
-          </li>
-          <li
-            className={activeTab === 'review' ? css.active : ''}
-            onClick={() => handleTabClick('review')}
-          >
-            Reviews(0)
-          </li>
-        </ul>
-        <div className={css.tabContent}>
-          {activeTab === 'description' && (
-            <div>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium nostrum vel
-              nulla aspernatur esse! Dicta, architecto beatae! Maiores veniam culpa omnis numquam,
-              recusandae, eius possimus perspiciatis eos libero repellat ullam!
-            </div>
-          )}
-          {activeTab === 'info' && <div>info</div>}
-          {activeTab === 'review' && <div>review</div>}
-        </div>
-      </div>
+      <DetailTabInfo />
 
       <Swiper
         slidesPerView={4}
