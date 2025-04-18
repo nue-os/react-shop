@@ -77,3 +77,12 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* Swiper Pagination Bullet 전역 변경 */
+.swiper-pagination-bullet {
+  border-radius: 0;
+  width: var(--fs16);
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--dark-colors-accent-dark);
+}

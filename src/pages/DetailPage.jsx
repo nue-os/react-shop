@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import css from './DetailPage.module.css'
 import { formmatCurrency } from '@/utils/feature'
-import ProductCard from '@/components/ProductCard'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
 import DetailTabInfo from '@/organism/DetailTabInfo'
+import SimilarProducts from '@/organism/SimilarProducts'
 
 const DetailPage = () => {
   const { product, relatedProducts } = useLoaderData()
@@ -58,27 +56,11 @@ const DetailPage = () => {
         </div>
       </div>
 
+      {/* 탭 정보 */}
       <DetailTabInfo />
 
-      <Swiper
-        slidesPerView={4}
-        spaceBetween={15}
-        pagination={{ clickable: true }}
-        modules={[Pagination]}
-        className={css.detailSlider}
-        breakpoints={{
-          1100: { slidesPerView: 4 },
-          800: { slidesPerView: 3 },
-          600: { slidesPerView: 2 },
-          0: { slidesPerView: 1 },
-        }}
-      >
-        {relatedProducts.map(item => (
-          <SwiperSlide key={item.id}>
-            <ProductCard item={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {/* 관련 카테고리 상품 슬라이더 */}
+      <SimilarProducts products={relatedProducts} />
     </main>
   )
 }

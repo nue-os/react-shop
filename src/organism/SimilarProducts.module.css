@@ -1,0 +1,10 @@
+.similarCon {
+  overflow: hidden;
+  padding-bottom: 50px;
+}
+.similarSlider {
+  overflow: visible;
+}
+.similarSlider > div:nth-of-type(2) {
+  bottom: -8px;
+}
