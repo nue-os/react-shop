@@ -3,6 +3,7 @@ import { lazy } from 'react'
 import Default from './layout/Default'
 import NotFound from './pages/NotFound'
 import { productDeatailLoader } from './loaders/productLoader'
+import { cartLoader } from './loaders/cartLoader'
 
 const MainPage = lazy(() => import('./pages/MainPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       { path: '/shop', element: <ShopPage /> },
       { path: '/about', element: <AboutPage /> },
       { path: '/blog', element: <BlogPage /> },
-      { path: '/cart', element: <CartPage /> },
+      { path: '/cart', element: <CartPage />, loader: cartLoader },
       {
         path: '/detail/:productId',
         element: <DetailPage />,

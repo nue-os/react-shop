@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import css from './Modal.module.css'
 import { formmatCurrency } from '@/utils/feature'
+import { useNavigate } from 'react-router-dom'
 
 const Modal = ({ product, count, onClose }) => {
   const [isActive, setIsActive] = useState(false)
+  const navigate = useNavigate()
 
   // transition 효과를 보이기 위해 마운트가 된 후에 isActive를 true를 줌
   useEffect(() => {
@@ -24,8 +26,10 @@ const Modal = ({ product, count, onClose }) => {
   }
 
   const handleAddToCart = () => {
-    // 장바구니 상품을 추가 json-server 추가
+    // 장바구니 상품을 추가(json-server 추가)
+
     // 장바구니 페이지로 이동
+    navigate('/cart')
   }
   return (
     <div className={`${css.modal} ${isActive ? css.active : ''}`}>
