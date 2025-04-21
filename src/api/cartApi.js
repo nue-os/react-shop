@@ -32,3 +32,16 @@ export const addToCart = async cartItem => {
     console.log('[error]', err)
   }
 }
+
+export const updateCartItem = async (id, count) => {
+  try {
+    // id에 해당하는 상품 가져오기
+    const cartItem = await axios.get(`/api/cart/${id}`)
+    // 해당 상품 카운트 업데이트
+    const updateItem = { ...cartItem.data, count }
+    const res = await axios.put(`/api/cart/${id}`, updateItem)
+    return res.data
+  } catch (err) {
+    console.log('[error]', err)
+  }
+}
