@@ -10,7 +10,6 @@ export const getCartData = async () => {
 }
 
 export const addToCart = async cartItem => {
-  console.log(cartItem)
   try {
     // 기존 장바구니 리스트 조회
     const cart = await getCartData()

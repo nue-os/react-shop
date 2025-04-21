@@ -3,7 +3,7 @@ import { getCartData } from '@/api/cartApi'
 export const cartLoader = async () => {
   try {
     const cartItems = await getCartData()
-    if (!cartItems || cartItems.length === 0) return { cartItems: [] }
+    if (!cartItems || cartItems.length === 0) return []
     return cartItems
   } catch (err) {
     console.log('[error]', err)

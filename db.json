@@ -184,15 +184,15 @@
       "price": 185000,
       "category": "new",
       "discount": 5,
-      "count": 2
+      "count": 1
     },
     {
-      "id": "4",
-      "title": "14k/18k 데일리 더블링 목걸이",
-      "img": "image4.jpg",
-      "price": 318000,
+      "id": "5",
+      "title": "14K/18K 네쥬 T라인 원터치 링 귀찌 귀걸이",
+      "img": "image5.jpg",
+      "price": 58000,
       "category": "new",
-      "discount": 42,
+      "discount": 0,
       "count": 1
     }
   ]

@@ -7,7 +7,7 @@ import { removeFromCart, updateCartItem } from '@/api/cartApi'
 const CartPage = () => {
   const cartItems = useLoaderData()
   const [items, setItems] = useState(cartItems)
-
+  console.log('items', cartItems)
   // 장바구니 상품 총 수량 계산
   const totalCount = items.reduce((sum, item) => sum + item.count, 0)
 
@@ -45,33 +45,39 @@ const CartPage = () => {
   return (
     <main>
       <h2>Shopping cart</h2>
-      <p>
-        장바구니 리스트는 <strong>{items.length}</strong>개이고, 총 상품 개수는{' '}
-        <strong>{totalCount}</strong>개 입니다.
-      </p>
-      <ul className={css.cartList}>
-        {items.map(item => (
-          <li className={css.cartItem} key={item.id}>
-            <div className={css.cartImg}>
-              <img src={`/public/img/${item.img}`} alt={item.title} />
-            </div>
-            <div className={css.title}>{item.title}</div>
-            <div className={css.price}>{formmatCurrency(item.price)}</div>
-            <div className={css.btnArea}>
-              <button onClick={() => decrease(item.id)}>-</button>
-              <span>{item.count}</span>
-              <button onClick={() => increase(item.id)}>+</button>
-            </div>
-            <div className={css.sum}>{formmatCurrency(item.price * item.count)}</div>
-            <div className={css.deleteBtn} onClick={() => handleDelete(item.id)}>
-              <i className="bi bi-trash"></i>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div className={css.totalPrice}>
-        총 금액: <strong>{formmatCurrency(totalSum)}</strong>
-      </div>
+      {items.length === 0 ? (
+        <p className={css.empty}>장바구니가 비었습니다.</p>
+      ) : (
+        <>
+          <p>
+            장바구니 리스트는 <strong>{items.length}</strong>개이고, 총 상품 개수는{' '}
+            <strong>{totalCount}</strong>개 입니다.
+          </p>
+          <ul className={css.cartList}>
+            {items.map(item => (
+              <li className={css.cartItem} key={item.id}>
+                <div className={css.cartImg}>
+                  <img src={`/public/img/${item.img}`} alt={item.title} />
+                </div>
+                <div className={css.title}>{item.title}</div>
+                <div className={css.price}>{formmatCurrency(item.price)}</div>
+                <div className={css.btnArea}>
+                  <button onClick={() => decrease(item.id)}>-</button>
+                  <span>{item.count}</span>
+                  <button onClick={() => increase(item.id)}>+</button>
+                </div>
+                <div className={css.sum}>{formmatCurrency(item.price * item.count)}</div>
+                <div className={css.deleteBtn} onClick={() => handleDelete(item.id)}>
+                  <i className="bi bi-trash"></i>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className={css.totalPrice}>
+            총 금액: <strong>{formmatCurrency(totalSum)}</strong>
+          </div>
+        </>
+      )}
     </main>
   )
 }
