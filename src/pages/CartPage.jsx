@@ -7,7 +7,7 @@ import { removeFromCart, updateCartItem } from '@/api/cartApi'
 const CartPage = () => {
   const cartItems = useLoaderData()
   const [items, setItems] = useState(cartItems)
-  console.log('items', cartItems)
+
   // 장바구니 상품 총 수량 계산
   const totalCount = items.reduce((sum, item) => sum + item.count, 0)
 

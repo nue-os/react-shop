@@ -184,7 +184,7 @@
       "price": 185000,
       "category": "new",
       "discount": 5,
-      "count": 2
+      "count": 3
     },
     {
       "id": "5",
@@ -200,15 +200,6 @@
       "title": "14K/18K 르끌레어 리프 큐빅 일체형 목걸이",
       "img": "image9.jpg",
       "price": 140000,
-      "category": "new",
-      "discount": 10,
-      "count": 1
-    },
-    {
-      "id": "8",
-      "title": "진주 헤어핀 스타일링 5종 연예인 스타일 옆머리 고정삔 5종",
-      "img": "image8.jpg",
-      "price": 54000,
       "category": "new",
       "discount": 10,
       "count": 1
