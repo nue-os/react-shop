@@ -187,21 +187,12 @@
       "count": 2
     },
     {
-      "id": "2",
-      "title": "14K/18K 마닐드 하트 드롭 큐빅 원터치 귀걸이",
-      "img": "image2.jpg",
-      "price": 126250,
-      "category": "top",
-      "discount": 31,
-      "count": 1
-    },
-    {
-      "id": "7",
-      "title": "블링 스타피쉬 헤어핀",
-      "img": "image7.jpg",
-      "price": 24000,
+      "id": "4",
+      "title": "14k/18k 데일리 더블링 목걸이",
+      "img": "image4.jpg",
+      "price": 318000,
       "category": "new",
-      "discount": 0,
+      "discount": 42,
       "count": 1
     }
   ]

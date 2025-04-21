@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import css from './CartPage.module.css'
 import { formmatCurrency } from '@/utils/feature'
-import { updateCartItem } from '@/api/cartApi'
+import { removeFromCart, updateCartItem } from '@/api/cartApi'
 
 const CartPage = () => {
   const cartItems = useLoaderData()
@@ -34,6 +34,14 @@ const CartPage = () => {
     const newCount = items.find(item => item.id === id).count + 1
     updateCartItem(id, newCount)
   }
+
+  const handleDelete = id => {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      setItems(prev => prev.filter(item => item.id !== id))
+      removeFromCart(id)
+    }
+  }
+
   return (
     <main>
       <h2>Shopping cart</h2>
@@ -55,7 +63,7 @@ const CartPage = () => {
               <button onClick={() => increase(item.id)}>+</button>
             </div>
             <div className={css.sum}>{formmatCurrency(item.price * item.count)}</div>
-            <div className={css.deleteBtn}>
+            <div className={css.deleteBtn} onClick={() => handleDelete(item.id)}>
               <i className="bi bi-trash"></i>
             </div>
           </li>

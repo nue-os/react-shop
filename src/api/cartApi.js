@@ -45,3 +45,12 @@ export const updateCartItem = async (id, count) => {
     console.log('[error]', err)
   }
 }
+
+export const removeFromCart = async id => {
+  try {
+    const res = await axios.delete(`/api/cart/${id}`)
+    return res.data
+  } catch (err) {
+    console.log('[error]', err)
+  }
+}
