@@ -20,4 +20,4 @@ const ProductCard = ({ item }) => {
   )
 }
 
-export default ProductCard
+export default React.memo(ProductCard)

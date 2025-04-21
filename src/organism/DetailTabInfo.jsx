@@ -42,4 +42,4 @@ const DetailTabInfo = () => {
   )
 }
 
-export default DetailTabInfo
+export default React.memo(DetailTabInfo)
