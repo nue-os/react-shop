@@ -71,6 +71,7 @@ footer {
 main h2 {
   font-size: var(--fs33);
   color: var(--dark-colors-accent-dark);
+  margin-bottom: var(--fs33);
 }
 
 a {
