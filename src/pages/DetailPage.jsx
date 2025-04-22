@@ -7,7 +7,7 @@ import SimilarProducts from '@/organism/SimilarProducts'
 import Modal from '@/components/Modal'
 
 const DetailPage = () => {
-  const { product, relatedProducts } = useLoaderData()
+  const { product, filteredRelatedProducts } = useLoaderData()
 
   const [isLoading, setIsLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -73,7 +73,7 @@ const DetailPage = () => {
       <DetailTabInfo />
 
       {/* 관련 카테고리 상품 슬라이더 */}
-      <SimilarProducts products={relatedProducts} />
+      <SimilarProducts products={filteredRelatedProducts} />
 
       {/* 장바구니 모달 */}
       {isModalOpen && <Modal product={product} count={count} onClose={closeModal} />}

@@ -7,7 +7,7 @@ const ShopPage = () => {
     <main className={css.shopPage}>
       <h2>Shop All</h2>
       <div className={css.filterFn}>
-        {/* 카테고리 선택 기능*/}
+        {/* 카테고리 선택 기능 */}
         <div className={css.category}>
           <button className={css.active}>전체상품</button>
           <button>신상품(new)</button>

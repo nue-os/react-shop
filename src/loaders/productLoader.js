@@ -8,8 +8,10 @@ export const productDeatailLoader = async ({ params }) => {
 
     // 상품 ID의 카테고리 정보와 일치하는 상품들
     const relatedProducts = await getProductsByCategory(product.category)
+    // 배열에서 product.id와 일치하는 상품을 제외
+    const filteredRelatedProducts = relatedProducts.filter(p => p.id !== product.id)
 
-    return { product, relatedProducts } // 리턴 값을 컴포넌트(<DetailPage/>)에서 받을 수 있음
+    return { product, filteredRelatedProducts } // 리턴 값을 컴포넌트(<DetailPage/>)에서 받을 수 있음
   } catch (err) {
     console.log('[error]', err)
     throw new Response('상품 데이터를 가져오는 중 오류 발생', { status: err.status || 500 })
