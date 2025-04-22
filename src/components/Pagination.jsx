@@ -22,13 +22,15 @@ const Pagination = ({ products }) => {
 
     // 전체 페이지기가 최대 페이지보다 작으면 전체 페이지 번호 표시
     if (pages <= maxPageNumber) {
-      return Array.from({ length: maxPageNumber }, (_, i) => i + 1)
+      return Array.from({ length: pages }, (_, i) => i + 1)
     }
 
-    // 페이지가 많을 경우 현재 페이지 번호를 기준으로 주변 번호 생성
-    // ex) 현재 페이지: 15 => 11 ~ 20까지 보여줌
-    let startPage = Math.max(1, currentPage - Math.floor(maxPageNumber / 2) + 1)
+    // 현재 페이지를 기준으로 startPage 계산 (최소 1 이상)
+    let startPage = Math.max(1, currentPage - Math.floor(maxPageNumber / 2))
+    // 시작 페이지로부터 maxPageNumber만큼 범위를 잡되, 최대 페이지 수를 넘지 않게 제한
     let endPage = Math.min(pages, startPage + maxPageNumber - 1)
+    // endPage 기준으로 다시 startPage 보정 (1 미만으로 내려가지 않게)
+    startPage = Math.max(1, endPage - maxPageNumber + 1)
 
     return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i)
   }
