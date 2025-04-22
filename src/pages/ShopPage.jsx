@@ -1,23 +1,38 @@
 import React, { useState } from 'react'
 import css from './ShopPage.module.css'
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
 import ProductCard from '@/components/ProductCard'
 import Pagination from '@/components/Pagination'
 
 const ShopPage = () => {
-  const { products } = useLoaderData()
+  const navigate = useNavigate()
+  const { products, per_page } = useLoaderData()
   const { data } = products
 
   const [isDown, setIsDown] = useState(false)
+
+  const [searchParams] = useSearchParams()
+
+  const handleCategoryFilter = category => {
+    const params = new URLSearchParams(searchParams) // 현재 파라미터 정보 유지
+    params.set('_page', 1) // 페이지를 1로 초기화
+    params.set('_per_page', per_page) // 페이지당 상품 수를 설정
+    category ? params.set('category', category) : params.delete('category') // 카테고리가 없으면 파라미터 제거
+
+    navigate(`/shop/?${params}`)
+  }
+
   return (
     <main className={css.shopPage}>
       <h2>Shop All</h2>
       <div className={css.filterFn}>
         {/* 카테고리 선택 기능 */}
         <div className={css.category}>
-          <button className={css.active}>전체상품</button>
-          <button>신상품(new)</button>
-          <button>인기상품(top)</button>
+          <button className={css.active} onClick={() => handleCategoryFilter('')}>
+            전체상품
+          </button>
+          <button onClick={() => handleCategoryFilter('new')}>신상품(new)</button>
+          <button onClick={() => handleCategoryFilter('top')}>인기상품(top)</button>
         </div>
         {/* 정렬 기능 */}
         <div className={`${css.sort} ${isDown ? css.active : ''}`}>
