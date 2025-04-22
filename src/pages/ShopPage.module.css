@@ -57,6 +57,8 @@
   margin-top: var(--fs8);
   position: absolute;
   width: 100%;
+  z-index: 10;
+  border-radius: var(--fs8);
 }
 .sort ul > li {
   border-bottom: 1px dotted var(--dark-colors-gray-dark);

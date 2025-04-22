@@ -23,9 +23,11 @@ export const shopLoader = async ({ request }) => {
   const page = url.searchParams.get('_page') || 1
   const per_page = url.searchParams.get('_per_page') || 12
   const category = url.searchParams.get('category') || ''
+  const sort = url.searchParams.get('_sort') || ''
 
   let queryString = `_page=${page}&_per_page=${per_page}`
   category ? (queryString += `&category=${category}`) : queryString
+  sort ? (queryString += `&_sort=${sort}`) : queryString
 
   const products = await getProductsData(queryString)
   return { products, per_page }
