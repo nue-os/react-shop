@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import css from './ShopPage.module.css'
+import { useLoaderData } from 'react-router-dom'
+import ProductCard from '@/components/ProductCard'
 
 const ShopPage = () => {
+  const { products } = useLoaderData()
+  const { data } = products
+
   const [isDown, setIsDown] = useState(false)
   return (
     <main className={css.shopPage}>
@@ -30,9 +35,9 @@ const ShopPage = () => {
       </div>
       <div className={css.productList}>
         <ul className={css.list}>
-          <li>상품리스트</li>
-          <li>상품리스트</li>
-          <li>상품리스트</li>
+          {data.map(item => (
+            <ProductCard key={item.id} item={item} />
+          ))}
         </ul>
         <div className={css.paginationArea}>
           <button>

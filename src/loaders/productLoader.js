@@ -1,4 +1,4 @@
-import { getProductById, getProductsByCategory } from '@/api/productApi'
+import { getProductById, getProductsByCategory, getProductsData } from '@/api/productApi'
 
 export const productDeatailLoader = async ({ params }) => {
   try {
@@ -16,4 +16,13 @@ export const productDeatailLoader = async ({ params }) => {
     console.log('[error]', err)
     throw new Response('상품 데이터를 가져오는 중 오류 발생', { status: err.status || 500 })
   }
+}
+
+export const shopLoader = async () => {
+  const page = 1
+  const per_page = 12
+  let queryString = `_page=${page}&_per_page=${per_page}`
+
+  const products = await getProductsData(queryString)
+  return { products, per_page }
 }
