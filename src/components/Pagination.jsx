@@ -1,7 +1,8 @@
 import React from 'react'
 import css from './Pagination.module.css'
 
-const Pagination = () => {
+const Pagination = ({ products }) => {
+  console.log(products)
   return (
     <div className={css.paginationArea}>
       <button>

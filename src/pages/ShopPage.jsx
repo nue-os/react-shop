@@ -40,7 +40,7 @@ const ShopPage = () => {
             <ProductCard key={item.id} item={item} />
           ))}
         </ul>
-        <Pagination />
+        <Pagination products={products} />
       </div>
     </main>
   )
