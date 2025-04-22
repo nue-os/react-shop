@@ -13,8 +13,12 @@
   padding: var(--fs8);
   transition: 0.3s;
 }
-.paginationArea button:hover,
+.paginationArea button:hover:not(:disabled),
 .paginationArea button.active {
   background-color: var(--dark-colors-accent-dark);
   color: var(--dark-colors-white-dark);
+}
+.paginationArea button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
