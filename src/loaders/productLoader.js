@@ -21,7 +21,7 @@ export const productDeatailLoader = async ({ params }) => {
 export const shopLoader = async ({ request }) => {
   const url = new URL(request.url)
   const page = url.searchParams.get('_page') || 1
-  const per_page = url.searchParams.get('_per_page') || 6
+  const per_page = url.searchParams.get('_per_page') || 12
   const category = url.searchParams.get('category') || ''
   const sort = url.searchParams.get('_sort') || ''
 
