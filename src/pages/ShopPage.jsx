@@ -5,13 +5,15 @@ import ProductCard from '@/components/ProductCard'
 import Pagination from '@/components/Pagination'
 
 const ShopPage = () => {
-  const navigate = useNavigate()
   const { products, per_page } = useLoaderData()
   const { data } = products
 
   const [isDown, setIsDown] = useState(false)
 
+  const navigate = useNavigate()
+
   const [searchParams] = useSearchParams()
+  const currentCategory = searchParams.get('category')
 
   const handleCategoryFilter = category => {
     const params = new URLSearchParams(searchParams) // 현재 파라미터 정보 유지
@@ -28,11 +30,24 @@ const ShopPage = () => {
       <div className={css.filterFn}>
         {/* 카테고리 선택 기능 */}
         <div className={css.category}>
-          <button className={css.active} onClick={() => handleCategoryFilter('')}>
+          <button
+            className={currentCategory === null ? css.active : ''}
+            onClick={() => handleCategoryFilter('')}
+          >
             전체상품
           </button>
-          <button onClick={() => handleCategoryFilter('new')}>신상품(new)</button>
-          <button onClick={() => handleCategoryFilter('top')}>인기상품(top)</button>
+          <button
+            className={currentCategory === 'new' ? css.active : ''}
+            onClick={() => handleCategoryFilter('new')}
+          >
+            신상품(new)
+          </button>
+          <button
+            className={currentCategory === 'top' ? css.active : ''}
+            onClick={() => handleCategoryFilter('top')}
+          >
+            인기상품(top)
+          </button>
         </div>
         {/* 정렬 기능 */}
         <div className={`${css.sort} ${isDown ? css.active : ''}`}>
