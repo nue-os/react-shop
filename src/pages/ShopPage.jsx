@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import css from './ShopPage.module.css'
 import { useLoaderData } from 'react-router-dom'
 import ProductCard from '@/components/ProductCard'
+import Pagination from '@/components/Pagination'
 
 const ShopPage = () => {
   const { products } = useLoaderData()
@@ -39,17 +40,7 @@ const ShopPage = () => {
             <ProductCard key={item.id} item={item} />
           ))}
         </ul>
-        <div className={css.paginationArea}>
-          <button>
-            <i className="bi bi-chevron-left"></i>
-          </button>
-          <button>1</button>
-          <button className={css.active}>2</button>
-          <button>3</button>
-          <button>
-            <i className="bi bi-chevron-right"></i>
-          </button>
-        </div>
+        <Pagination />
       </div>
     </main>
   )
