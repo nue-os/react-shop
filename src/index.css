@@ -52,6 +52,11 @@
   --fs64: 64px;
 }
 
+html,
+body {
+  scroll-behavior: auto !important; /* 부트스트랩의 자연스럽게 올라가는 효과 없애기 위해 덮어쓰기 */
+}
+
 body {
   background-color: #eaeaea;
 }
