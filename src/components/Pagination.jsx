@@ -62,7 +62,6 @@ const Pagination = ({ products }) => {
   }
 
   const pageNumbers = getPageNumbers()
-  console.log(pageNumbers)
 
   return (
     <div className={css.paginationArea}>

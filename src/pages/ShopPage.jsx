@@ -7,7 +7,6 @@ import Pagination from '@/components/Pagination'
 const ShopPage = () => {
   const { products, per_page } = useLoaderData()
   const { data } = products
-  console.log(products)
 
   const [isDown, setIsDown] = useState(false)
 
