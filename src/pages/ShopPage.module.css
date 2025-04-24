@@ -38,6 +38,7 @@
 }
 .sortHeader {
   background-color: var(--dark-colors-white-dark);
+  color: var(--dark-colors-black-dark);
   padding: var(--fs12);
   border-radius: var(--fs8);
   position: relative;

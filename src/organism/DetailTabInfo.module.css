@@ -8,6 +8,7 @@
   padding: var(--fs12) var(--fs20);
   border-bottom: 3px solid transparent;
   transition: 0.3s;
+  color: inherit;
 }
 .tabBtn button:hover,
 .tabBtn button:focus,

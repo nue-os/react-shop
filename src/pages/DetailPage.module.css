@@ -55,6 +55,7 @@ main > * {
 .counterArea {
   background-color: #dcdbdb;
   border-radius: var(--fs8);
+  color: var(--dark-colors-black-dark);
 }
 .counterArea button {
   border: none;

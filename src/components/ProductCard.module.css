@@ -44,7 +44,9 @@
   padding: var(--fs16);
 }
 .title {
-  color: var(--dark-colors-black-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .price {
   color: var(--dark-colors-accent-dark);
@@ -57,4 +59,5 @@
   left: 0;
   right: 0;
   bottom: 0;
+  color: transparent;
 }
