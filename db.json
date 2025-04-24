@@ -1061,5 +1061,37 @@
       "discount": 0,
       "count": 1
     }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "desc": "할 일1",
+      "createdAt": "2025.04.24",
+      "isDone": false
+    },
+    {
+      "id": 2,
+      "desc": "할 일2",
+      "createdAt": "2025.04.25",
+      "isDone": true
+    },
+    {
+      "id": 3,
+      "desc": "할 일3",
+      "createdAt": "2025.04.26",
+      "isDone": true
+    },
+    {
+      "id": 4,
+      "desc": "할 일4",
+      "createdAt": "2025.04.27",
+      "isDone": true
+    },
+    {
+      "id": 5,
+      "desc": "할 일5",
+      "createdAt": "2025.04.28",
+      "isDone": true
+    }
   ]
 }

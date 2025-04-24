@@ -103,6 +103,7 @@ const Header = () => {
             <CustomNavLink to="/shop" label="shop" />
             <CustomNavLink to="/blog" label="blog" />
             <CustomNavLink to="/about" label="about" />
+            <CustomNavLink to="/todos" label="todo" />
           </nav>
           <div className={css.icon}>
             <CustomIconLink to="/cart" icon="bi-cart" />
