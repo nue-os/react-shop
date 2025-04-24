@@ -15,8 +15,14 @@ import 'swiper/css/pagination'
 
 import './index.css'
 
+// Redux
+import { Provider } from 'react-redux'
+import store from './store/store.js'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} fallbackElement={<div>로딩중...</div>} />
+    <Provider store={store}>
+      <RouterProvider router={router} fallbackElement={<div>로딩중...</div>} />
+    </Provider>
   </StrictMode>
 )
